@@ -1,0 +1,14 @@
+/* ===== Attractions Page ===== */
+.attractions-page { min-height: 80vh; }
+.page-header { border-bottom: 2px solid var(--light-bg); padding-bottom: 24px; }
+
+.filter-sidebar {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  position: sticky;
+  top: 80px;
+}
+.filter-heading { font-size: 1.1rem; color: var(--dark); margin-bottom: 20px; font-family: 'Playfair Display', serif; }
+.filter-label { font-weight: 600; font-size: 0.875rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 8px; }

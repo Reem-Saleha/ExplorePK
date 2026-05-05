@@ -1,0 +1,20 @@
+/* ===== Admin Forms ===== */
+.form-page { min-height: 80vh; }
+
+.form-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 40px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.form-title { font-size: 1.8rem; margin-bottom: 28px; color: var(--dark); border-bottom: 2px solid var(--light-bg); padding-bottom: 16px; }
+
+.epk-input:focus { border-color: var(--primary); box-shadow: 0 0 0 4px rgba(27, 108, 168, 0.1); }
+
+@media (max-width: 576px) {
+  .form-card { padding: 24px 20px; }
+}

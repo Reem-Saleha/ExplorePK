@@ -1,0 +1,15 @@
+node_modules/
+.env
+.env.local
+.env.production
+
+# Build output
+client/build/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,74 @@
+/* ===== Dashboard Pages ===== */
+.dashboard-page { min-height: 80vh; }
+
+.dashboard-header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; }
+.dashboard-title { font-size: 2rem; margin-bottom: 4px; }
+
+.user-welcome { display: flex; align-items: center; gap: 20px; }
+.user-avatar-lg {
+  width: 64px; height: 64px;
+  background: var(--primary);
+  color: var(--white);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2rem; font-weight: 700;
+}
+
+/* Stat Cards */
+.stat-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  box-shadow: var(--shadow);
+  border-left: 4px solid;
+  transition: transform 0.2s;
+}
+.stat-card:hover { transform: translateY(-3px); }
+.stat-card-blue { border-color: var(--primary); }
+.stat-card-amber { border-color: var(--accent); }
+.stat-card-green { border-color: #198754; }
+.stat-card-purple { border-color: #6f42c1; }
+
+.stat-icon { font-size: 2.2rem; }
+.stat-card-blue .stat-icon { color: var(--primary); }
+.stat-card-amber .stat-icon { color: var(--accent); }
+.stat-card-green .stat-icon { color: #198754; }
+.stat-card-purple .stat-icon { color: #6f42c1; }
+
+.stat-value { font-size: 2rem; font-weight: 700; color: var(--dark); margin-bottom: 2px; }
+.stat-label-card { font-size: 0.875rem; color: var(--text-muted); margin: 0; }
+
+/* Tabs */
+.epk-tabs { border-bottom: 2px solid var(--border); }
+.epk-tabs .nav-link { color: var(--text-muted); font-weight: 600; border: none; border-bottom: 3px solid transparent; border-radius: 0; padding: 10px 20px; margin-bottom: -2px; }
+.epk-tabs .nav-link.active { color: var(--primary); border-bottom-color: var(--primary); background: transparent; }
+.epk-tabs .nav-link:hover { color: var(--primary); }
+
+/* Table */
+.epk-table { border-radius: var(--radius); overflow: hidden; }
+.epk-table thead th { background: var(--dark); color: var(--white); font-weight: 600; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.5px; border: none; }
+.epk-table tbody tr:hover { background: var(--light-bg); }
+.epk-table td { vertical-align: middle; font-size: 0.95rem; }
+
+/* Empty State Dashboard */
+.empty-state-dash { text-align: center; padding: 60px 20px; background: var(--light-bg); border-radius: var(--radius); }
+.empty-state-dash i { font-size: 3.5rem; color: var(--text-muted); display: block; margin-bottom: 16px; }
+.empty-state-dash p { color: var(--text-muted); font-size: 1rem; margin-bottom: 0; }
+
+.tab-content-epk { padding: 24px 0; }
+
+/* Review card in UserDashboard */
+.review-dash-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s;
+}
+.review-dash-card:hover { transform: translateY(-2px); }
+.review-comment { font-size: 0.95rem; color: var(--text); margin-bottom: 4px; }
+.stars-small { font-size: 0.85rem; }
