@@ -62,8 +62,19 @@
 .dropdown-item { font-weight: 500; padding: 8px 20px; }
 .dropdown-item:hover { background-color: var(--light-bg); color: var(--primary); }
 
+/* Auth buttons — always side by side with proper gap */
+.epk-auth-btns {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: nowrap;
+}
+
 @media (max-width: 991px) {
-  .epk-navbar .navbar-collapse { padding: 16px 0; }
-  .epk-navbar .nav-link { padding: 10px 0 !important; }
-  .navbar-nav.ms-auto { flex-direction: row; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .epk-navbar .navbar-collapse { padding: 16px 0; border-top: 1px solid rgba(255,255,255,0.08); margin-top: 8px; }
+  .epk-navbar .nav-link { padding: 10px 4px !important; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .epk-navbar .nav-link:last-child { border-bottom: none; }
+  .epk-auth-btns { margin-top: 14px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.08); }
+  .epk-auth-btns .btn { flex: 1; text-align: center; padding: 10px 16px; font-size: 0.95rem; }
 }

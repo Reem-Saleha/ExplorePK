@@ -27,3 +27,8 @@
   border-color: var(--primary);
   color: var(--white);
 }
+
+@media (max-width: 576px) {
+  .category-tabs { gap: 6px; }
+  .tab-btn { padding: 6px 14px; font-size: 0.82rem; }
+}

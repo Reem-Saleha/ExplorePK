@@ -16,6 +16,7 @@ import UserDashboard from './pages/UserDashboard';
 import AdminDashboard from './pages/AdminDashboard';
 import AddEditAttraction from './pages/AddEditAttraction';
 import AddEditEvent from './pages/AddEditEvent';
+import TravelBot from './components/TravelBot';
 
 const App = () => {
   return (
@@ -66,6 +67,7 @@ const App = () => {
           </main>
           <Footer />
         </div>
+        <TravelBot />
       </Router>
     </AuthProvider>
   );

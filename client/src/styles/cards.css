@@ -69,3 +69,8 @@
   line-height: 1;
 }
 .review-delete-btn:hover { color: #e53935; background: #fdecea; }
+
+@media (max-width: 576px) {
+  .card-img-wrapper { height: 170px; }
+  .card-body-epk { padding: 14px; }
+}

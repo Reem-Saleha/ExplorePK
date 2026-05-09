@@ -219,5 +219,9 @@
 .category-pill-cultural { background: #EDE7F6; }
 
 @media (max-width: 768px) {
-  .hero-cta .btn { margin-bottom: 12px; }
+  .hero-cta { flex-direction: column; align-items: center; gap: 12px; }
+  .hero-cta .btn { width: 100%; max-width: 280px; }
+  .hero-content { padding: 0 16px 140px; }
+  .stat-number { font-size: 1.9rem; }
+  .category-pill { padding: 14px 8px; font-size: 0.82rem; }
 }

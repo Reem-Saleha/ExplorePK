@@ -108,3 +108,17 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Playfair Display', serif; color: var(--da
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--light-bg); }
 ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 3px; }
+
+/* ===== Mobile Global Fixes ===== */
+@media (max-width: 768px) {
+  .section-padding { padding: 48px 0; }
+  .section-title { font-size: 1.7rem; }
+  .section-subtitle { font-size: 0.95rem; }
+  .epk-btn-primary, .epk-btn-accent, .epk-btn-outline {
+    padding: 10px 18px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Prevent any horizontal overflow */
+html, body { overflow-x: hidden; max-width: 100%; }

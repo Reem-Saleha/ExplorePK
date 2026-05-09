@@ -16,6 +16,14 @@ const attractionSchema = new mongoose.Schema({
   },
   timings: { type: String },
   nearbyHotels: [{ type: String }],
+  hostels: [
+    {
+      name: { type: String },
+      bookingUrl: { type: String },
+      priceRange: { type: String },
+      rating: { type: Number }
+    }
+  ],
   averageRating: { type: Number, default: 0 },
   totalReviews: { type: Number, default: 0 },
   createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },

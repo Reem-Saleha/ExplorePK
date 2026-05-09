@@ -59,7 +59,7 @@ const AttractionDetail = () => {
   if (loading) return <Spinner />;
   if (!data) return <div className="container py-5 text-center"><h4>Attraction not found.</h4></div>;
 
-  const { name, city, category, description, images, timings, nearbyHotels, averageRating, totalReviews, location } = data;
+  const { name, city, category, description, images, timings, hostels, averageRating, totalReviews, location } = data;
 
   return (
     <div className="detail-page section-padding">
@@ -129,12 +129,37 @@ const AttractionDetail = () => {
                 </div>
               )}
 
-              {nearbyHotels?.length > 0 && (
+              {hostels?.length > 0 && (
                 <div className="mt-3">
-                  <h6 className="detail-section-title">Nearby Hotels</h6>
-                  <ul className="nearby-hotels-list">
-                    {nearbyHotels.map((h, i) => <li key={i}><i className="bi bi-building me-2"></i>{h}</li>)}
-                  </ul>
+                  <h6 className="detail-section-title">
+                    <i className="bi bi-building me-2"></i>Nearby Hotels
+                  </h6>
+                  <div className="hostel-grid">
+                    {hostels.map((hostel, i) => (
+                      <div key={i} className="hostel-card">
+                        <div className="hostel-card-top">
+                          <span className="hostel-name">{hostel.name}</span>
+                          <span className="hostel-price-badge">{hostel.priceRange}</span>
+                        </div>
+                        <div className="hostel-card-bottom">
+                          <div className="hostel-stars">
+                            {[1, 2, 3, 4, 5].map((s) => (
+                              <i key={s} className={`bi ${s <= Math.round(hostel.rating) ? 'bi-star-fill' : 'bi-star'}`}></i>
+                            ))}
+                            <span className="hostel-rating-num">{hostel.rating?.toFixed(1)}</span>
+                          </div>
+                          <a
+                            href={hostel.bookingUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hostel-book-btn"
+                          >
+                            Book Now
+                          </a>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               )}
             </div>

@@ -62,10 +62,10 @@ const Navbar = () => {
                 </ul>
               </div>
             ) : (
-              <>
-                <Link className="btn epk-btn-outline me-2" to="/login" onClick={() => setMenuOpen(false)}>Login</Link>
+              <div className="epk-auth-btns">
+                <Link className="btn epk-btn-outline" to="/login" onClick={() => setMenuOpen(false)}>Login</Link>
                 <Link className="btn epk-btn-primary" to="/register" onClick={() => setMenuOpen(false)}>Register</Link>
-              </>
+              </div>
             )}
           </div>
         </div>

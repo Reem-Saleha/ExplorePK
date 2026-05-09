@@ -36,6 +36,11 @@ const seed = async () => {
       location: { lat: 31.5881, lng: 74.3101 },
       timings: 'Open daily 9:00 AM - 10:00 PM',
       nearbyHotels: ['Pearl Continental Lahore', 'Avari Hotel', 'Faletti\'s Hotel'],
+      hostels: [
+        { name: 'Lahore Backpackers Hostel', bookingUrl: 'https://www.booking.com/searchresults.html?ss=Lahore&nflt=ht_id%3D203', priceRange: 'PKR 1,500 - 2,500/night', rating: 4.2 },
+        { name: 'Old City Heritage Hostel', bookingUrl: 'https://www.booking.com/searchresults.html?ss=Lahore&nflt=ht_id%3D203', priceRange: 'PKR 1,200 - 2,000/night', rating: 4.0 },
+        { name: 'Walled City Guesthouse', bookingUrl: 'https://www.booking.com/searchresults.html?ss=Lahore&nflt=ht_id%3D203', priceRange: 'PKR 2,000 - 3,500/night', rating: 4.3 }
+      ],
       averageRating: 4.8,
       totalReviews: 0,
       createdBy: admin._id
@@ -49,6 +54,10 @@ const seed = async () => {
       location: { lat: 27.3244, lng: 68.1379 },
       timings: 'Open daily 8:00 AM - 5:00 PM',
       nearbyHotels: ['Indus Hotel Larkana', 'Mehran Hotel'],
+      hostels: [
+        { name: 'Mohenjo-daro Rest House', bookingUrl: 'https://www.booking.com/searchresults.html?ss=Karachi&nflt=ht_id%3D203', priceRange: 'PKR 1,000 - 1,800/night', rating: 3.8 },
+        { name: 'Larkana Heritage Inn', bookingUrl: 'https://www.booking.com/searchresults.html?ss=Karachi&nflt=ht_id%3D203', priceRange: 'PKR 1,500 - 2,500/night', rating: 3.9 }
+      ],
       averageRating: 4.5,
       totalReviews: 0,
       createdBy: admin._id
@@ -62,6 +71,11 @@ const seed = async () => {
       location: { lat: 34.8821, lng: 73.6939 },
       timings: 'Best visited June - September',
       nearbyHotels: ['Pine Park Hotel Naran', 'PTDC Motel Naran', 'Lalazar Hotel'],
+      hostels: [
+        { name: 'Naran Backpackers Lodge', bookingUrl: 'https://www.booking.com/searchresults.html?ss=Gilgit&nflt=ht_id%3D203', priceRange: 'PKR 1,200 - 2,200/night', rating: 4.1 },
+        { name: 'Kaghan Valley Hostel', bookingUrl: 'https://www.booking.com/searchresults.html?ss=Gilgit&nflt=ht_id%3D203', priceRange: 'PKR 1,500 - 2,800/night', rating: 4.3 },
+        { name: 'Lake View Rest House', bookingUrl: 'https://www.booking.com/searchresults.html?ss=Gilgit&nflt=ht_id%3D203', priceRange: 'PKR 800 - 1,500/night', rating: 3.9 }
+      ],
       averageRating: 4.9,
       totalReviews: 0,
       createdBy: admin._id
@@ -75,6 +89,11 @@ const seed = async () => {
       location: { lat: 36.3167, lng: 74.6500 },
       timings: 'Open year-round (best April - October)',
       nearbyHotels: ['Serena Hotel Hunza', 'Eagle\'s Nest Hotel', 'Old Hunza Inn'],
+      hostels: [
+        { name: 'Hunza Dreamland Hostel', bookingUrl: 'https://www.booking.com/searchresults.html?ss=Gilgit&nflt=ht_id%3D203', priceRange: 'PKR 1,800 - 3,000/night', rating: 4.5 },
+        { name: 'Karimabad Budget Inn', bookingUrl: 'https://www.booking.com/searchresults.html?ss=Gilgit&nflt=ht_id%3D203', priceRange: 'PKR 1,200 - 2,500/night', rating: 4.2 },
+        { name: 'Mountain View Guesthouse', bookingUrl: 'https://www.booking.com/searchresults.html?ss=Gilgit&nflt=ht_id%3D203', priceRange: 'PKR 1,500 - 2,800/night', rating: 4.4 }
+      ],
       averageRating: 4.9,
       totalReviews: 0,
       createdBy: admin._id
@@ -88,6 +107,10 @@ const seed = async () => {
       location: { lat: 31.5883, lng: 74.3155 },
       timings: 'Open daily 8:30 AM - 5:30 PM',
       nearbyHotels: ['Pearl Continental', 'Nishat Hotel', 'Ramada Lahore'],
+      hostels: [
+        { name: 'Fort Road Backpackers', bookingUrl: 'https://www.booking.com/searchresults.html?ss=Lahore&nflt=ht_id%3D203', priceRange: 'PKR 1,200 - 2,200/night', rating: 4.1 },
+        { name: 'Gulberg Budget Hostel', bookingUrl: 'https://www.booking.com/searchresults.html?ss=Lahore&nflt=ht_id%3D203', priceRange: 'PKR 1,500 - 2,800/night', rating: 4.0 }
+      ],
       averageRating: 4.7,
       totalReviews: 0,
       createdBy: admin._id
