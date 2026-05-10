@@ -2,8 +2,8 @@
 
 A full-stack MERN web application for discovering Pakistani tourist attractions and events, with a Gemini AI-powered travel assistant (TravelBot).
 
-**Live Demo:** https://explorepk.netlify.app  
-**Backend API:** https://explorepk-api.onrender.com  
+**Live Demo:** https://explore-pk.vercel.app  
+**Backend API:** https://explorepk-production.up.railway.app  
 **GitHub:** https://github.com/Reem-Saleha/ExplorePK
 
 ---

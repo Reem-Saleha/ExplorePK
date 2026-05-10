@@ -71,7 +71,9 @@ ExplorePK was developed with the following objectives:
 
 # 2. GitHub Repository
 
-**Repository URL:** [https://github.com/Reem-Saleha/ExplorePK](https://github.com/Reem-Saleha/ExplorePK)
+**Repository URL:** [https://github.com/Reem-Saleha/ExplorePK](https://github.com/Reem-Saleha/ExplorePK)  
+**Live Demo:** [https://explore-pk.vercel.app](https://explore-pk.vercel.app)  
+**Backend API:** [https://explorepk-production.up.railway.app](https://explorepk-production.up.railway.app)
 
 The repository contains the full source code for both the frontend (React client) and backend (Node.js/Express server) of the ExplorePK platform.
 
