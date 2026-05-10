@@ -145,7 +145,10 @@ const Attractions = () => {
                     <div className="row g-4">
                       {paginated.map((a) => (
                         <div key={a._id} className="col-md-6 col-xl-4">
-                          <AttractionCard attraction={a} />
+                          <AttractionCard
+                            attraction={a}
+                            onDeleted={(id) => setAttractions((prev) => prev.filter((x) => x._id !== id))}
+                          />
                         </div>
                       ))}
                     </div>

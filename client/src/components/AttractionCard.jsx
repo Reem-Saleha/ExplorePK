@@ -1,5 +1,7 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
+import api from '../utils/api';
 import '../styles/cards.css';
 
 const StarRating = ({ rating }) => {
@@ -13,9 +15,21 @@ const StarRating = ({ rating }) => {
   );
 };
 
-const AttractionCard = ({ attraction }) => {
+const AttractionCard = ({ attraction, onDeleted }) => {
   const { _id, name, city, category, description, images, averageRating, totalReviews } = attraction;
   const imgSrc = images?.[0] || 'https://via.placeholder.com/400x250?text=No+Image';
+  const { isAdmin } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleDelete = async () => {
+    if (!window.confirm(`Delete "${name}"? This cannot be undone.`)) return;
+    try {
+      await api.delete(`/attractions/${_id}`);
+      if (onDeleted) onDeleted(_id);
+    } catch (err) {
+      alert(err.response?.data?.message || 'Failed to delete attraction.');
+    }
+  };
 
   return (
     <div className="epk-card h-100">
@@ -36,6 +50,22 @@ const AttractionCard = ({ attraction }) => {
         <Link to={`/attractions/${_id}`} className="btn epk-btn-primary w-100 mt-3">
           View Details <i className="bi bi-arrow-right ms-1"></i>
         </Link>
+        {isAdmin() && (
+          <div className="d-flex gap-2 mt-2">
+            <button
+              className="btn btn-warning btn-sm flex-fill"
+              onClick={() => navigate(`/admin/attractions/edit/${_id}`)}
+            >
+              <i className="bi bi-pencil-fill me-1"></i>Edit
+            </button>
+            <button
+              className="btn btn-danger btn-sm flex-fill"
+              onClick={handleDelete}
+            >
+              <i className="bi bi-trash-fill me-1"></i>Delete
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

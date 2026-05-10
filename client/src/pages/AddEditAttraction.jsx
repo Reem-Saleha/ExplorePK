@@ -6,6 +6,8 @@ import '../styles/forms.css';
 
 const CATEGORIES = ['historical', 'natural', 'religious', 'adventure', 'cultural'];
 
+const emptyHostel = { name: '', priceRange: '', rating: '', bookingUrl: '' };
+
 const AddEditAttraction = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -13,9 +15,9 @@ const AddEditAttraction = () => {
 
   const [form, setForm] = useState({
     name: '', city: '', category: 'historical', description: '',
-    timings: '', nearbyHotels: '', images: '',
-    lat: '', lng: ''
+    timings: '', images: '', lat: '', lng: ''
   });
+  const [hostels, setHostels] = useState([]);
   const [loading, setLoading] = useState(isEdit);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
@@ -28,10 +30,17 @@ const AddEditAttraction = () => {
           setForm({
             name: a.name || '', city: a.city || '', category: a.category || 'historical',
             description: a.description || '', timings: a.timings || '',
-            nearbyHotels: a.nearbyHotels?.join(', ') || '',
             images: a.images?.join(', ') || '',
             lat: a.location?.lat || '', lng: a.location?.lng || ''
           });
+          if (a.hostels?.length > 0) {
+            setHostels(a.hostels.map((h) => ({
+              name: h.name || '', priceRange: h.priceRange || '',
+              rating: h.rating ?? '', bookingUrl: h.bookingUrl || ''
+            })));
+          } else if (a.nearbyHotels?.length > 0) {
+            setHostels(a.nearbyHotels.map((name) => ({ name, priceRange: '', rating: '', bookingUrl: '' })));
+          }
         })
         .catch(() => setError('Failed to load attraction'))
         .finally(() => setLoading(false));
@@ -39,6 +48,14 @@ const AddEditAttraction = () => {
   }, [id, isEdit]);
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+
+  const handleHostelChange = (index, field, value) => {
+    setHostels((prev) => prev.map((h, i) => i === index ? { ...h, [field]: value } : h));
+  };
+
+  const addHostel = () => setHostels((prev) => [...prev, { ...emptyHostel }]);
+
+  const removeHostel = (index) => setHostels((prev) => prev.filter((_, i) => i !== index));
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -50,9 +67,11 @@ const AddEditAttraction = () => {
     const payload = {
       name: form.name, city: form.city, category: form.category,
       description: form.description, timings: form.timings,
-      nearbyHotels: form.nearbyHotels.split(',').map((h) => h.trim()).filter(Boolean),
       images: form.images.split(',').map((i) => i.trim()).filter(Boolean),
-      location: { lat: Number(form.lat) || 0, lng: Number(form.lng) || 0 }
+      location: { lat: Number(form.lat) || 0, lng: Number(form.lng) || 0 },
+      hostels: hostels
+        .filter((h) => h.name.trim())
+        .map((h) => ({ name: h.name.trim(), priceRange: h.priceRange.trim(), rating: Number(h.rating) || 0, bookingUrl: h.bookingUrl.trim() }))
     };
     try {
       if (isEdit) await api.put(`/attractions/${id}`, payload);
@@ -102,8 +121,55 @@ const AddEditAttraction = () => {
                 <input type="text" name="images" className="form-control epk-input" placeholder="https://..., https://..." value={form.images} onChange={handleChange} />
               </div>
               <div className="col-12">
-                <label className="form-label">Nearby Hotels <small className="text-muted">(comma separated)</small></label>
-                <input type="text" name="nearbyHotels" className="form-control epk-input" placeholder="Hotel A, Hotel B" value={form.nearbyHotels} onChange={handleChange} />
+                <div className="d-flex justify-content-between align-items-center mb-2">
+                  <label className="form-label mb-0">Nearby Hotels / Hostels</label>
+                  <button type="button" className="btn btn-sm btn-outline-primary" onClick={addHostel}>
+                    + Add Hotel
+                  </button>
+                </div>
+                {hostels.length === 0 && (
+                  <p className="text-muted small">No hotels added yet. Click "+ Add Hotel" to add one.</p>
+                )}
+                {hostels.map((hostel, index) => (
+                  <div key={index} className="border rounded p-3 mb-2" style={{ background: '#f9f9f9' }}>
+                    <div className="row g-2">
+                      <div className="col-md-6">
+                        <input
+                          type="text" className="form-control epk-input form-control-sm"
+                          placeholder="Hotel name *" value={hostel.name}
+                          onChange={(e) => handleHostelChange(index, 'name', e.target.value)}
+                        />
+                      </div>
+                      <div className="col-md-6">
+                        <input
+                          type="text" className="form-control epk-input form-control-sm"
+                          placeholder="Price range (e.g. PKR 3000-6000)" value={hostel.priceRange}
+                          onChange={(e) => handleHostelChange(index, 'priceRange', e.target.value)}
+                        />
+                      </div>
+                      <div className="col-md-4">
+                        <input
+                          type="number" min="0" max="5" step="0.1"
+                          className="form-control epk-input form-control-sm"
+                          placeholder="Rating (0-5)" value={hostel.rating}
+                          onChange={(e) => handleHostelChange(index, 'rating', e.target.value)}
+                        />
+                      </div>
+                      <div className="col-md-6">
+                        <input
+                          type="text" className="form-control epk-input form-control-sm"
+                          placeholder="Booking URL (optional)" value={hostel.bookingUrl}
+                          onChange={(e) => handleHostelChange(index, 'bookingUrl', e.target.value)}
+                        />
+                      </div>
+                      <div className="col-md-2 d-flex align-items-center">
+                        <button type="button" className="btn btn-sm btn-danger w-100" onClick={() => removeHostel(index)}>
+                          Remove
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
               <div className="col-md-6">
                 <label className="form-label">Latitude</label>

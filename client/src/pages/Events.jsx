@@ -107,7 +107,10 @@ const Events = () => {
               <div className="row g-4">
                 {events.map((e) => (
                   <div key={e._id} className="col-md-6 col-lg-3">
-                    <EventCard event={e} />
+                    <EventCard
+                      event={e}
+                      onDeleted={(id) => setEvents((prev) => prev.filter((x) => x._id !== id))}
+                    />
                   </div>
                 ))}
               </div>
